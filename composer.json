@@ -1,0 +1,26 @@
+{
+    "name": "hnndy/geetest-tool",
+    "description": "geetest tool demo",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jasester",
+            "email": "jasester@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Hnndy\\GeetestTool\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hnndy\\GeetestTool\\GeetestToolServiceProvider"
+            ]
+        }
+    }
+}
