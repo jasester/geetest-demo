@@ -9,11 +9,12 @@ class GeetestTool
 {
     protected $GtSdk;
 
-    protected $minutes = 15; //默认60分钟
+    protected $minutes;
 
     public function __construct()
     {
         $this->GtSdk = new GeetestLib(config('geetest.captcha_id'), config('geetest.captcha_key'));
+        $this->minutes = (config('geetest.cache_minutes')) ? config('geetest.cache_minutes') : 15;
     }
 
     /**
@@ -28,9 +29,9 @@ class GeetestTool
             'ip_address' => (array_key_exists('ip_address', $param)) ? $param['ip_address'] : '127.0.0.1', # 请在此处传输用户请求验证时所携带的IP
         ];
         $status = $this->GtSdk->pre_process($data, 1);
-        cache('gtserver', $status, $this->minutes);
-        cache('user_id', $data['user_id'], $this->minutes);
-        cache('ip_address', $data['ip_address'], $this->minutes);
+        cache(['gtserver' => $status], $this->minutes);
+        cache(['user_id' => $data['user_id']], $this->minutes);
+        cache(['ip_address' => $data['ip_address']], $this->minutes);
         echo $this->GtSdk->get_response_str();
     }
 
