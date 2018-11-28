@@ -33,7 +33,12 @@ app('geetest')->StartCaptchaServlet();
 ```
 验证
 ```php
-app('geetest')->VerifyCaptchaServlet(); //返回bool型
+$param = [
+    'geetest_challenge' => '',
+    'geetest_validate' => '',
+    'geetest_seccode' => 
+];
+app('geetest')->VerifyCaptchaServlet($param); //返回bool型
 ```
 ## Example
 视图
