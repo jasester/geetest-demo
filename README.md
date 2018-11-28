@@ -82,7 +82,12 @@ Route::get('/getCaptcha', function () {
 ```
 验证
 ```php
-dd(app('geetest')->VerifyCaptchaServlet());
+$param = [
+    'geetest_challenge' => '',
+    'geetest_validate' => '',
+    'geetest_seccode' => 
+];
+dd(app('geetest')->VerifyCaptchaServlet($param));
 ```
 
 ## License
